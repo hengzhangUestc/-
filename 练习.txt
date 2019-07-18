@@ -1,0 +1,35 @@
+// 链表的节点
+class ListNode () {
+	
+	int value ;
+	ListNode node = null;
+	
+	ListNode (int value) {
+	  this.value  = value;
+	}
+}
+
+// 树的节点
+class TreeNode () {
+
+	int value ;
+	TreeNode left;
+	TreeNode right;
+	TreeNode(int value){
+		this.value = value;
+	}
+}
+//  单链表反转
+ListNode pre = null;
+ListNode next = node;
+while (next != null) {
+	ListNode temp = next.next;
+	next.next = pre;
+	pre = next;
+	next = temp;
+
+}
+
+//  给你三个链数组，然后求数组的中位数。
+
+//  切割ip地址
