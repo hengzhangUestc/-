@@ -1,0 +1,94 @@
+二叉树的遍历
+
+前序遍历
+1、递归版本
+public void preOrder1 (TreeNode  root) {
+	if(root != null) {
+		System.out.print(root.val + "->");
+		preOrder1(root.left);
+		preOrder1(root.right);
+	}
+}
+2、非递归版本
+public void preOrder2 (TreeNode root) {
+	Stack<TreeNode> st = new Stack<>();
+	while (root != null || !st.isEmpty()) {
+		if(root != null) {
+			System.out.print(root.val + "->");	
+			st.push(root);
+			root = root.left;
+		}else {
+			TreeNode temp = st.pop();
+			root = root.left;
+		}
+	}
+	
+}
+
+中序遍历
+左根右  非递归核心代码
+	if(root != null) {
+		st.push(root);
+		root = root.left;
+	}else {
+		TreeNode temp = st.pop();
+		System.out.print(temp.val + "->");
+		root = temp.right;
+	}
+
+后序遍历
+左右根 非递归实现
+public void postOrder2 (TreeNode root)  {
+	Stack<TreeNode> st = new Stack<>();
+	Stack<TreeNode> st2 = new Stack<>();
+	int left = 1;
+	int right = 2;
+	while (root != null && !st.empty) {
+		while (root != null)  {
+			st.push(root);
+			st2.push(left);
+			root = root.left;
+		}
+
+		while (!st.empty() && st2.peek() == right) {
+			st2.pop();
+			System.out.print(st.pop().val + "->");
+		}
+		
+		if(!st.empty() && st2.peek() == left) {
+			st2.pop();
+			st2.push(right);
+			root = st.peek().right;
+		}
+	}
+ }
+
+层序遍历
+
+public static void levelOrder (TreeNode root)  {
+	Queue<TreeNode> queue = new LinkList<>();
+	queue.add(root);
+	TreeNode currentRoot;
+	while (!queue.isEmpty())  {
+		currentRoot = queue.poll();
+		System.out.print(currentRoot.val + "->");
+
+		if(currentRoot.left != null) {
+			queue.add(currentRoot.left);
+		}
+		if(currentRoot.right != null) {
+			queue.add(currentRoot.right);
+		}
+	}
+	
+
+}
+
+
+
+https://www.cnblogs.com/zhi-leaf/p/10813048.html
+
+https://blog.csdn.net/coder__666/article/details/80349039
+
+
+

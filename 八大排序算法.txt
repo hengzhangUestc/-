@@ -160,9 +160,9 @@ public static void baseSort (int [] a) {
 		time++;
 	}
 
-	ArrayList<ArrayList<Integer>>  lists =  new ArrayList<>;
+	ArrayList<ArrayList<Integer>>  lists =  new ArrayList<>();
 	for (int k = 0 ; k < 10 ;k ++) {
-		ArrayList<Integer> list1 = new ArrayList<>;
+		ArrayList<Integer> list1 = new ArrayList<>();
 		lists.add(list1);
 	}
 
