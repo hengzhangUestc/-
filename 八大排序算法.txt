@@ -15,7 +15,7 @@ for (int i = 0 ; i < a.length ; i ++) {
 		}
 	}
 }
-直接插入排
+直接插入排序
 for （int i= 1 ; i < a.length ; i ++） {
 	int temp = a[i];
 	int j = 0;
@@ -32,6 +32,10 @@ if（low >= high） {
 int i = low ;
 int j = high ;
 while (i < j) {
+ /*     关于快速排序法为什么一定要哨兵j 先出动的原因？
+            如果选取最左边的数arr[left]作为基准数，那么先从右边开始可保证i,j在相遇时，相遇数是小于基准数的，
+            交换之后temp所在位置的左边都小于temp。但先从左边开始,相遇数是大于基准数的，无法满足temp左边的数都小于它。
+            所以进行扫描，要从基准数的对面开始。（注：左右相对来说，也可前后）*/
 	while (i < j && a[j] >= a[low]){
 		j--;
 	}
@@ -107,8 +111,8 @@ public static void heapSort (int [] a) {
 		heapify(a,0 ,size);
 	}
 }
-public static void heapInsert(int [] a) {
-	for (int i = 0 ; i <a.length ; i ++) {
+public static void heapInsert(int [] a) {     //  给的数组的遍历形式是层序遍历
+	for (int i = 0 ; i <a.length ; i ++) {    
 		int current = i ; 
 		int father = (current -1) / 2;
 		while (a[current] > a[father]) {
@@ -126,7 +130,7 @@ public static void swap (int[] a ,int i ,int j) {
 
 public static void heapify(int [] a ,int index , int size) {
 	int left = 2 * index +1;
-	int right = 2 *index +2;
+	int right = 2 * index +2;
 	while (left < size) {
 		int largest ; 
 		if(right < size && a[right] > a[left]) {
@@ -173,16 +177,18 @@ public static void baseSort (int [] a) {
 			list2.add(a[j]);
 			//  list2.set(x,list2);   更新指定的索引
 		}
-	}
 
-	int count = 0 ; 
-	for (int i = 0 ; i < time ; i ++)  {
-		while (lists.get(i).size > 0)  {
+		int count = 0 ; 
+		for (int i = 0 ; i < time ; i ++)  {
+			while (lists.get(i).size > 0)  {
 			ArrayList<Integer> list3 = lists.get(i);
 			a[count ++] = list3.get(0);
 			list3.remove(0); 
+			}
 		}
 	}
+
+	
 }
 
 

@@ -19,11 +19,13 @@ public void preOrder2 (TreeNode root) {
 			root = root.left;
 		}else {
 			TreeNode temp = st.pop();
-			root = root.left;
+			root = root.right;
 		}
 	}
 	
 }
+
+  //   看到的又三种情况，另外两种 while  if    和 while  
 
 中序遍历
 左根右  非递归核心代码
